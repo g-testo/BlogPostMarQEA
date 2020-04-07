@@ -18,11 +18,16 @@ public class BlogPostController {
 	
 	@GetMapping("/")
 	public String index(BlogPost blogPost, Model model) {
-		model.addAttribute(posts);
+		model.addAttribute("posts", posts);
 		return "blogpost/index";
 	}
 	
-	@PostMapping("/")
+	@GetMapping("/posts/new")
+	public String newPost (BlogPost blogPost) {
+		return "blogpost/new";
+	}
+	
+	@PostMapping("/posts")
 	public String addPost(BlogPost blogPost, Model model) {
 		BlogPost savedPost = blogPostRepository.save(blogPost);
 		posts.add(savedPost);

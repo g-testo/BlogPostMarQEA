@@ -3,14 +3,33 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Blog Site</title>
+		<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/standard.css" rel="stylesheet">
 	</head>
 	<body>
-		<h3>Blog Post Form</h3>
-	    <p>Thank you for your submission!</p>
-	    <h4>Blog Post:</h4>
-	    <p th:text="${post.id}" />
-	    <p th:text="${post.title}" />
-	    <p th:text="${post.author}" />
-	    <p th:text="${post.blogEntry}" />
+		<div class="container">
+			<a th:href="@{/}">
+				<button class="btn btn-success">
+					Back To Home Page
+				</button>
+			</a>
+			<a th:href="@{/posts/new}">
+				<button class= "btn btn-primary">
+					Submit another post
+				</button>
+			</a>
+		
+			<h3>Blog Post Form</h3>
+		    <p>Thank you for your submission!</p>
+		    <h4>Blog Post:</h4>
+		    <p th:text="${post.id}" />
+		    <p th:text="${post.title}" />
+		    <p th:text="${post.author}" />
+		    <p th:text="${post.blogEntry}" />
+		    
+		    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+			<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+		</div>
 	</body>
+	
 </html>
