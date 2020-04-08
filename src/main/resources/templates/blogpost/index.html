@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<title>Blog Site</title>
-		<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/standard.css" rel="stylesheet">
-	</head>
-	<body>
-		<div class="container">
-			<h1>Welcome to Our Blog Post Site!</h1>	
-			
-			<a th:href="@{/posts/new}">
-				<button class= "btn btn-primary">
-					Create a New Blog Post
-				</button>
-			</a>
+<head>
+	<title>Blog Site</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/standard.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<h1>Welcome to Our Blog Post Site!</h1>
 
-			<h3>Check out our blog posts!</h3>
-			<p>Thank you for your submisssion!</p>
-			
-			<div class="row">
-			    <div th:each="blog:${posts}">
-			        <div class="col-md-6">
-			            <div class="panel panel-default">
-			                <div class="panel-heading">
-			                    <p th:text="${blog.title}"/>
-							</div>
-						    <div class="panel-body">
-								<p th:text="${blog.author}"/>
-								<p th:text="${blog.blogEntry}" />
-						    </div>
-							<div class="panel-footer">
-								<!-- Link to Update -->
-								<!-- Link to Show  -->
-								<!-- Link to Destroy -->
-			            	</div>
-			        	</div>
-			        </div>
-			    </div>
+	<div class="row">
+		<div th:each="blog:${posts}">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 th:text="${blog.title}"></h2>
+				</div>
+				<div class="panel-body">
+					<strong><p th:text="${blog.author}"/></strong>
+					<p th:text="${blog.blogEntry}" />
+				</div>
+				<div class="panel-footer">
+					<!-- Link to Update -->
+					<!-- Link to Show  -->
+					<!--  Link to Destroy -->
+					Buttons
+				</div>
 			</div>
-			
 		</div>
-		
-		<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-	</body>
+	</div>
+</div>
+
+	<a th:href="@{/posts/new}"><button class="btn btn-primary">Create a New Blog Post</button></a>
+
+</div>
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+</body>
 </html>
