@@ -9,8 +9,8 @@
 	<body>
 		<div class="container">
 			<h1>Create a New Blog Post</h1>
-	 		<form action="#" th:action="@{/posts}" th:object="${blogPost}" method="post">
-	 		
+	 		<form action="#" th:action="@{/posts/update/} + ${postIdToChange}" th:object="${blogPost}" th:method="post">
+	 			 		
 		 		<div class="form-group">
 		 			<input type="text" class="form-control" placeholder="Blog Title..." th:field="*{title}" />
 		 		</div>
