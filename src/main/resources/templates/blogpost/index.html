@@ -2,40 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Blog Site</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/standard.css" rel="stylesheet">
+	<div th:replace="/fragments/styling :: head-style" ></div>
 </head>
 <body>
-<div class="container">
-<h1>Welcome to Our Blog Post Site!</h1>
+	<div th:replace="fragments/navbar :: navbar" ></div>
+	<div class="container">
+		<h1>Welcome to Our Blog Post Site!</h1>
+		<div class="row">
+			<div th:each="blog:${posts}">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 th:text="${blog.title}"></h2>
+						</div>
+						<div class="panel-body">
+							<strong><p th:text="${blog.author}"/></strong>
+							<p th:text="${blog.blogEntry}" />
+						</div>
+						<div class="panel-footer">
 
-	<div class="row">
-		<div th:each="blog:${posts}">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h2 th:text="${blog.title}"></h2>
-				</div>
-				<div class="panel-body">
-					<strong><p th:text="${blog.author}"/></strong>
-					<p th:text="${blog.blogEntry}" />
-				</div>
-				<div class="panel-footer">
-					<!-- Link to Update -->
-					<!-- Link to Show  -->
-					<!--  Link to Destroy -->
-					Buttons
+							<a th:href="@{'/posts/update/{id}'(id=${blog.id})}"><button class="btn btn-secondary">Update</button></a>
+						
+
+							<form action="#" th:action="@{'/posts/{id}'(id=${blog.id})}" th:method="delete" >
+								<input type="hidden" name="_method" value="delete" />
+								<button type="submit" id="submitButton">Delete</button>
+							</form>
+
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-	<a th:href="@{/posts/new}"><button class="btn btn-primary">Create a New Blog Post</button></a>
 
-</div>
-	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+	<!-- <a type="button" th:with="url = @{'/posts/{id}'(id=${blog.id})}" th:onclick="sendDelete([[${url}]])"><button class="btn btn-danger">Delete</button></a>
+
+	<script th:inline="javascript">
+	    function sendDelete(url) {
+	    	fetch(url, { method: 'DELETE' })
+	    }
+	</script> -->
+	
+	<div th:replace="/fragments/styling :: body-links" ></div>
 </body>
 </html>

@@ -2,15 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Create a New Blog</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="../../webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../css/standard.css" rel="stylesheet">
+    <div th:replace="/fragments/styling :: head-style" ></div>
 </head>
 	<body>
+		<div th:replace="fragments/navbar :: navbar" ></div>
 		<div class="container">
 			<h1>Create a New Blog Post</h1>
-	 		<form action="#" th:action="@{/posts/update/} + ${postIdToChange}" th:object="${blogPost}" th:method="post">
-	 			 		
+	 		<form action="#" th:action="@{'/posts/update/{id}'(id=${postIdToChange})}" th:object="${blogPost}" th:method="post">
+	 			 			 			 	
 		 		<div class="form-group">
 		 			<input type="text" class="form-control" placeholder="Blog Title..." th:field="*{title}" />
 		 		</div>
@@ -23,11 +22,9 @@
 		 			<input type="text" class ="form-control" placeholder="Blog Entry" th:field="*{blogEntry}" />
 		 		</div>
 		
-		 		<button class="btn btn-primary">Submit Your Post</button>
+		 		<button class="btn btn-primary" type="submit">Submit Your Post</button>
 			</form>
 		</div>
-		
-		<script src="../../webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="../../webjars/jquery/1.9.1/jquery.min.js"></script>
+		<div th:replace="/fragments/styling :: body-links" ></div>
 	</body>
 </html>
